@@ -18,6 +18,7 @@ var getDogFact = function() {
 var displayFact = function() {
     var fact = dogFacts[0].facts[Math.floor(Math.random() * (dogFacts[0].facts).length)];
     console.log(fact);
+    factSpan.textContent= fact;
 };
 
 factBtn.addEventListener("click", displayFact);
