@@ -10,15 +10,20 @@ var getDogFact = function() {
             response.json().then(function(data) {                
                 dogFacts.push(data);
                 console.log(dogFacts);
-            })
+            });
+        } else {
+            factSpan.textContent = "Sorry! Dog facts not available at this time!"
         }
     })
+    .catch(function(error) {
+        factSpan.textContent = "Unable to connect to Dog Facts at this time"
+    });
 };
 
 var displayFact = function() {
     var fact = dogFacts[0].facts[Math.floor(Math.random() * (dogFacts[0].facts).length)];
     console.log(fact);
-    factSpan.textContent= fact;
+   factSpan.textContent= fact; 
 };
 
 factBtn.addEventListener("click", displayFact);
