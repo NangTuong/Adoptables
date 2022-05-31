@@ -1,25 +1,25 @@
-var getUserRepos = function(data){
-    // this is formatting the github api url
-    var apiUrl = "http://dog-api.kinduff.com?nummber=5";
+var factSpan = document.querySelector("#dog-fact");
+var factBtn = document.querySelector("#fact-btn");
 
-    // make a request to the url
-    fetch(apiUrl)
-        .then(function(response){
-            // request successful
-            if(response.ok){
-                response.json().then(function(data){
-                    displayRepos(data);
-                });
-            } else{
-                alert("Error: Github User Not Found");
-            }
-        })
-        .catch(function(error){
-            // Notice this .catch()  getting chained onto the end of the .then() method
-            alert ("unable to connect to Github");
-        });
-        
+var dogFacts = [];
+
+var getDogFact = function() {
+    var dogFactApiUrl = "https://cors-anywhere.herokuapp.com/https://dog-api.kinduff.com/api/facts?number=100";
+    fetch(dogFactApiUrl).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {                
+                dogFacts.push(data);
+                console.log(dogFacts);
+            })
+        }
+    })
 };
 
-getUserRepos();
-console.log(data);
+var displayFact = function() {
+    var fact = dogFacts[0].facts[Math.floor(Math.random() * (dogFacts[0].facts).length)];
+    console.log(fact);
+    factSpan.textContent= fact;
+};
+
+factBtn.addEventListener("click", displayFact);
+getDogFact();
