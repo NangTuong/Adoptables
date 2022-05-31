@@ -4,7 +4,7 @@ var factBtn = document.querySelector("#fact-btn");
 var dogFacts = [];
 
 var getDogFact = function() {
-    var dogFactApiUrl = "https://cors-anywhere.herokuapp.com/https://dog-api.kinduff.com/api/facts?number=100";
+    var dogFactApiUrl = "https://dog-api.kinduff.com/api/facts?number=10";
     fetch(dogFactApiUrl).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {                
