@@ -4,7 +4,7 @@ var factBtn = document.querySelector("#fact-btn");
 var dogFacts = [];
 
 var getDogFact = function() {
-    var dogFactApiUrl = "https://dog-api.kinduff.com/api/facts?number=10";
+    var dogFactApiUrl = "https://www.dogfactsapi.ducnguyen.dev/api/v1/facts/?number=100";
     fetch(dogFactApiUrl).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {                
@@ -28,3 +28,4 @@ var displayFact = function() {
 
 factBtn.addEventListener("click", displayFact);
 getDogFact();
+
