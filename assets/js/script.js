@@ -4,11 +4,7 @@ var factBtn = document.querySelector("#fact-btn");
 var dogFacts = [];
 
 var getDogFact = function() {
-<<<<<<< HEAD
     var dogFactApiUrl = "https://www.dogfactsapi.ducnguyen.dev/api/v1/facts/?number=100";
-=======
-    var dogFactApiUrl = "https://cors-anywhere.herokuapp.com/https://dog-api.kinduff.com/api/facts?number=10";
->>>>>>> d11030ba7c7cc8c84b5373ec9c8204a6942d37e8
     fetch(dogFactApiUrl).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {                
@@ -19,15 +15,9 @@ var getDogFact = function() {
             factSpan.textContent = "Sorry! Dog facts not available at this time!"
         }
     })
-<<<<<<< HEAD
     .catch(function(error) {
         factSpan.textContent = "Unable to connect to Dog Facts at this time"
     });
-=======
-    .catch(function(error){
-        factSpan.textContent="Dog facts unavailble at this time!";
-    })
->>>>>>> d11030ba7c7cc8c84b5373ec9c8204a6942d37e8
 };
 
 var displayFact = function() {
