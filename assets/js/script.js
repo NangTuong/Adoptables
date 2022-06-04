@@ -74,15 +74,25 @@ var getPets = function(token, userLocation, userAnimal){
             "Authorization": "Bearer " + token
         })
     })
-    .then(function(response){
-        return response.json();
-    })
-    .then(function(data){
-        console.log(data);
-        petContainer.textContent = "";
-        createPetCard(data);
-    })
-
+        .then(function(response){
+            if(response.ok){
+                return response.json()
+                .then(function(data){
+                    console.log(data);
+                    petContainer.textContent = "";
+                    createPetCard(data);;
+                });
+            } else{
+                var zipError = document.createElement("h6");
+                zipError.textContent = "Invalid Zip Code, Please Try Again!";
+                petContainer.appendChild(zipError);
+            }
+        })
+        .catch(function(error){
+            var connectError = document.createElement("h6");
+                connectError.textContent = "Unable to connect, Please try again later!";
+                petContainer.appendChild(connectError);
+        })
 };
 
 var createPetCard = function(data) {  
@@ -170,6 +180,7 @@ var formSubmitHandler = function(event) {
     userForm.setAttribute("class", "hide");
     userButtons.removeAttribute("class", "hide");
     getToken();
+    petContainer.textContent = "";
 };
 
 // Displays the user zip form, hides the fetch buttons
