@@ -7,6 +7,7 @@ var userDog = document.querySelector("#fetch-dog-api");
 var userCat = document.querySelector("#fetch-cat-api");
 var editUserZip = document.querySelector("#edit-zip");
 var userButtons = document.querySelector("#user-buttons");
+var petContainer = document.querySelector("#display-pets");
 
 // sets an array for the dog facts
 var dogFacts = [];
@@ -78,13 +79,97 @@ var getPets = function(token, userLocation, userAnimal){
             "Authorization": "Bearer " + token
         })
     })
-    .then(function(response){
-        return response.json();
-    })
-    .then(function(data){
-        console.log(data);
-    })
+        .then(function(response){
+            if(response.ok){
+                return response.json()
+                .then(function(data){
+                    console.log(data);
+                    petContainer.textContent = "";
+                    createPetCard(data);;
+                });
+            } else{
+                var zipError = document.createElement("h6");
+                zipError.textContent = "Invalid Zip Code, Please Try Again!";
+                petContainer.appendChild(zipError);
+            }
+        })
+        .catch(function(error){
+            var connectError = document.createElement("h6");
+                connectError.textContent = "Unable to connect, Please try again later!";
+                petContainer.appendChild(connectError);
+        })
 };
+
+var createPetCard = function(data) {  
+
+    // loop over given pets
+    for (var i = 0; i < data.animals.length; i++) {
+
+        // Create our card
+        var cardEl = document.createElement("div");
+        cardEl.classlist = "card";
+
+        // create div to hold image and title
+        var cardImageEl = document.createElement("div");
+        cardImageEl.classlist = "card-image";
+
+
+        // create image
+        var imageEl = document.createElement("img");
+        if(!data.animals[i].primary_photo_cropped){
+            imageEl.setAttribute("src", "./assets/images/pet-image-not-found.jpg");
+        } 
+        else{
+        imageEl.setAttribute("src", data.animals[i].primary_photo_cropped.small);
+        }
+
+        cardImageEl.appendChild(imageEl);
+        
+  
+        // Name information
+        var nameEl = document.createElement("span");
+        nameEl.textContent = data.animals[i].name;
+        nameEl.classList = "card-title";
+        cardImageEl.appendChild(nameEl);
+
+        //   appending image and title div to card
+        cardEl.appendChild(cardImageEl);
+
+        // card content div
+        var cardContentEl = document.createElement("div");
+        cardContentEl.classList = ("card-content");
+
+        // Distance information
+        var distanceEl = document.createElement("p");
+        distanceEl.textContent = Math.round(data.animals[i].distance) + " miles away.";
+        cardContentEl.appendChild(distanceEl);
+
+        // Description information
+        var breedEl = document.createElement("p");
+        breedEl.textContent = "Breed: " + data.animals[i].breeds.primary;
+        cardContentEl.appendChild(breedEl);
+
+        //   appending cardContent to cardEl
+        cardEl.appendChild(cardContentEl);
+
+        // create div for "a"
+        var urlEl = document.createElement("div");
+        urlEl.classlist = "card-action";
+
+        // create the "a"
+        var anchorEl = document.createElement("a");
+        anchorEl.setAttribute("href", data.animals[i].url);
+        anchorEl.textContent = "Click here for more info!";
+        anchorEl.classList = "purple-text text-darken-4";
+        urlEl.appendChild(anchorEl);
+
+        // append urlEl to card
+        cardEl.appendChild(urlEl);
+
+        // append to the dom
+        petContainer.appendChild(cardEl);
+    }
+  };
 
 //  takes user input and stores to local
 var formSubmitHandler = function(event) {
@@ -100,6 +185,7 @@ var formSubmitHandler = function(event) {
     userForm.setAttribute("class", "hide");
     userButtons.removeAttribute("class", "hide");
     getToken();
+    petContainer.textContent = "";
 };
 
 // Displays the user zip form, hides the fetch buttons
