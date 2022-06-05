@@ -46,13 +46,18 @@ var getToken = function(){
         })
     })
     .then(function(response){
+        if (response.ok) {
         return response.json();
-    })
+    }else{
+        alert('Error')
+    }
+})
     .then(function(data){
         console.log(data);
         var token =data.access_token;
         localStorage.setItem("token", JSON.stringify(token));
     })
+    
 };
 
 // function to compile all user inputs

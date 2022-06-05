@@ -18,4 +18,7 @@ Made By:
 * Kyle Adcock
 * John Brown (Honorable Mention)
 
-# Screen Shots
+## Screen Shots
+![screenshot](./assets/images/Screenshot%20(6).png)
+![screenshot](./assets/images/Screenshot%20(7).png)
+![screenshot](./assets/images/Screenshot%20(8).png)
