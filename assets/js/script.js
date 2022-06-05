@@ -107,7 +107,7 @@ var createPetCard = function(data) {
 
         // Create our card
         var cardEl = document.createElement("div");
-        cardEl.classlist = "card";
+        cardEl.setAttribute("class", "help");
 
         // create div to hold image and title
         var cardImageEl = document.createElement("div");
