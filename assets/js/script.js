@@ -85,7 +85,7 @@ var getPets = function(token, userLocation, userAnimal){
                 .then(function(data){
                     console.log(data);
                     petContainer.textContent = "";
-                    createPetCard(data);;
+                    createPetCard(data);
                 });
             } else{
                 var zipError = document.createElement("h6");
@@ -107,7 +107,8 @@ var createPetCard = function(data) {
 
         // Create our card
         var cardEl = document.createElement("div");
-        cardEl.setAttribute("class", "help");
+        cardEl.classlist = "card";
+        cardEl.setAttribute("class", "pet-card");
 
         // create div to hold image and title
         var cardImageEl = document.createElement("div");
@@ -130,7 +131,7 @@ var createPetCard = function(data) {
         var nameEl = document.createElement("span");
         nameEl.textContent = data.animals[i].name;
         nameEl.classList = "card-title";
-        cardImageEl.appendChild(nameEl);
+        //cardImageEl.appendChild(nameEl);
 
         //   appending image and title div to card
         cardEl.appendChild(cardImageEl);
@@ -138,6 +139,7 @@ var createPetCard = function(data) {
         // card content div
         var cardContentEl = document.createElement("div");
         cardContentEl.classList = ("card-content");
+        cardContentEl.appendChild(nameEl);
 
         // Distance information
         var distanceEl = document.createElement("p");
@@ -165,6 +167,13 @@ var createPetCard = function(data) {
 
         // append urlEl to card
         cardEl.appendChild(urlEl);
+
+        // create anchor to return to the top
+        var returnEl = document.createElement("a");
+        returnEl.setAttribute("href", "#");
+        returnEl.textContent = "Click here to return to top";
+        returnEl.classList = "center-align";
+        cardEl.appendChild(returnEl);
 
         // append to the dom
         petContainer.appendChild(cardEl);

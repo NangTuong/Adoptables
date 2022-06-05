@@ -14,71 +14,53 @@
   <header class="row">
       <nav class="col s12 nav-wrapper orange darken-4 flow-text ">
                <a href="#" class="page-title">Adoptables</a>
-                <ul id="nav-mobile" class="right">
-                    <!-- <li><a href="#Our-Goal">Our Goal</a></li> -->
-                    <!-- <li><a href="#Find-A-Dog">Find A Dog</a></li>
-                    <li><a href="#Find-A-Cat">Find A Cat</a></li> -->
-                </ul>
       </nav>
   </header>
   <!-- Our Goal Section-->
   <section id="Our-Goal" class="row Our-Goal">
       <div class="col s12 flow-text">
-          <h1 class="white-text">Our Purpose</h1>
-          <p class="white-text">Here at Adoptables, our goal is to help find a loving home for animals in need.</p>
+          <h1 class="white-text center-align">Our Purpose</h1>
+          <p class="white-text center-align">Here at Adoptables, our goal is to help find a loving home for animals in need.</p>
       </div>
   </section>
 
 <!-- user input section -->
-<section>
-    <form class="" id="user-form">
-        <input id="user-zip" type="text" minlength="5" maxlength="5" placeholder="Enter your Zip Code" />
-        <button type="submit" id="userZip">Get Started</button>
+<section class="center-align">
+    <form class="center-align" id="user-form">
+        <input class="center-align" id="user-zip" type="text" minlength="5" maxlength="5" placeholder="Enter your Zip Code" />
+        <button class="waves-effect waves-light btn pulse" type="submit" id="userZip">Get Started</button>
     </form>
     <div id="user-buttons" class="hide">
-        <button id="fetch-dog-api" userAnimal="dog">Find a Dog!</button>
-        <button id="fetch-cat-api" userAnimal="cat">Find a Cat!</button>
-        <button id="edit-zip">Change Zip Code</button>
+        <button class="waves-effect waves-light btn hoverable" id="fetch-dog-api" userAnimal="dog">Find a Dog!</button>
+        <button class="waves-effect waves-light btn hoverable" id="fetch-cat-api" userAnimal="cat">Find a Cat!</button>
+        <button class="waves-effect waves-light btn hoverable" id="edit-zip">Change Zip Code</button>
     </div>
 </section>
 
-  <!-- Find A Dog Section -->
-  <section id="Find-A-Dog" class="row">
-    <div class="col s12 flow-text">
-    </div>
-</section>
-<!-- Find A Cat Section  -->
-<section id="Find-A-Cat" class="row">
-    <div class="col s12 flow-text">
-    </div>
-</section>
+
 <!-- Random Dog Fact Section -->
-<section class="row">
+<section class="row center-align facts">
     <div  class="col s12">
-       <span id="dog-fact">Click The button to see a random dog fact!</span><br>
-       <button id="fact-btn">Facts!</button>
+       <span class="white-text dog-fact" id="dog-fact">Click the button to see a random dog fact!</span><br>
+       <button class="waves-effect waves-light btn hoverable" id="fact-btn">Facts!</button>
        <div></div>
     </div>
 </section>
 <!-- Displaying Pets off Data -->
-<section class="row">
-    <div class="col s12 m7" id="display-pets">
+<section class="row display-pets center-align">
+    <div class="col s12" id="display-pets">
 
     </div>
 </section>
 
-
-<!-- Adoption Banner -->
-  <section class="row">
-      <div class="col s12">
-          <img src="./assets/images/adopt-dog.jpg" alt="Save A Life, Adopt a Pet">
-      </div>
-  </section>
   <!-- Footer -->
   <footer>
     <div class="row">
         <div class="col s12">
-            <h3 class="white-text">❤️ Made with love by Adoptables.</h3>
+            <img src="./assets/images/adopt-dog.jpg" alt="Save A Life, Adopt a Pet">
+        </div>
+        <div class="col s12">
+            <h3 class="white-text flow-text">❤️ Made with love by Adoptables.</h3>
     </div>
     </div>    
   </footer>
